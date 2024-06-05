@@ -4,13 +4,20 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
   try {
-    const { fullName, username, password, confirmpassword, gender } = req.body;
+    const { fullName, username, password, confirmPassword, gender } = req.body;
+    // console.log("User created");
 
-    if (password !== confirmpassword) {
-      return res.status(400).json({ error: "Passwords don't match" });
-    }
+    // if (password === confirmPassword) {
+    //   console.log("Password verified");
+    // }
+
+    // if (password !== confirmPassword) {
+    //   console.log("User created");
+    //   return res.status(400).json({ error: "Passwords don't match" });
+    // }
 
     const user = await User.findOne({ username });
+    // console.log("User created");
 
     if (user) {
       return res.status(400).json({ error: "Username already exists" });
